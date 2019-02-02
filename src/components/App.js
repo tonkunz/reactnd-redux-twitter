@@ -1,6 +1,16 @@
+//External dependences
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+//Our dependences
+import { handleInitialData } from '../actions/shared'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect()(App)
