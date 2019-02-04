@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 //Our dependences
 import { handleInitialData } from '../actions/shared'
+import Dashboard from './Dashboard'
 
 class App extends Component {
 
@@ -14,10 +15,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        Starter Code
+        {this.props.loading
+        ? <div className='center'>Loading...</div>
+        : <Dashboard />}
       </div>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
