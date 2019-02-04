@@ -1,6 +1,7 @@
 //External dependences
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 
 //Our dependences
 import { handleInitialData } from '../actions/shared'
@@ -15,9 +16,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <LoadingBar />
         {this.props.loading
-        ? <div className='center'>Loading...</div>
-        : <Dashboard />}
+          ? null
+          : <Dashboard />}
       </div>
     )
   }
