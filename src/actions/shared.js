@@ -6,7 +6,7 @@ import { receiveTweets } from './tweets'
 import { receiveUsers } from './users'
 import { setAuthedUser } from './authedUser'
 
-const AUTHED_ID = 'dan_abramov'
+const AUTHED_ID = 'tylermcginnis'
 
 export function handleInitialData () {
   return (dispatch) => {
