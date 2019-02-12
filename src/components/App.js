@@ -28,7 +28,7 @@ class App extends Component {
               : <div>
                   <Route path='/' exact component={Dashboard}/>
                   <Route path='/tweet/:id' component={TweetPage}/>
-                  <Route path='/new' component={NewTweet}/>
+                  <Route path ='/new' component={NewTweet}/>
                 </div>}
           </div>
         </Fragment>

@@ -27,7 +27,7 @@ class TweetPage extends Component {
 }
 
 function mapStateToProps ({authedUser, tweets, users}, props) {
-  //Remove after react-router
+  //From React Router
   const { id } = props.match.params
   
   return {
