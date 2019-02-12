@@ -1,6 +1,7 @@
 //External dependences
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 //Our dependences
 import { handleAddTweet } from '../actions/tweets'
@@ -8,6 +9,7 @@ import { handleAddTweet } from '../actions/tweets'
 class NewTweet extends Component {
   state = {
     text: '',
+    toHome: false,
   }
 
   handleChange = (event) => {
@@ -24,12 +26,15 @@ class NewTweet extends Component {
     dispatch(handleAddTweet(this.state.text, id))
 
     this.setState({
-      text: ''
+      text: '',
+      toHome: id ? false : true
     })
   }
 
   render() {
-    {/* TODO: redirect to dashboard view! */}
+    if (this.state.toHome) {
+      return <Redirect to='/'/>
+    }
 
     const tweetLeft = 280 - this.state.text.length
 
