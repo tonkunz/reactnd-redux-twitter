@@ -1,4 +1,4 @@
-import { RECEIVE_TWEETS, TOGGLE_TWEET } from '../actions/tweets'
+import { RECEIVE_TWEETS, TOGGLE_TWEET, ADD_TWEET } from '../actions/tweets'
 
 export default function tweets (state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,23 @@ export default function tweets (state = {}, action) {
       return {
         ...state,
         ...action.tweets
+      }
+    case ADD_TWEET :
+      //Adding a tweet to parent reply array
+      let replyingTo = {}
+      if (action.tweet.replyingTo !== null) {
+        replyingTo = {
+          [action.tweet.replyingTo]: {
+            ...state[action.tweet.replyingTo],
+            replies: state[action.tweet.replyingTo].replies.concat([action.tweet.id])
+          }
+        }
+      }
+
+      return {
+        ...state,
+        [action.tweet.id] : action.tweet,
+        ...replyingTo,
       }
     case TOGGLE_TWEET :
       return {
